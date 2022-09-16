@@ -5,7 +5,7 @@ import { robotNPC } from "src/npc/npcCreator"
 import { movePlayerToVector3 } from "src/utils/movePlayerToVector3"
 import { Interior } from "./interior"
 
-
+//ad
 class ExteriorInstance extends Scene {
 
     private exteriorEntity = new Entity()
