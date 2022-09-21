@@ -12,7 +12,7 @@ export class coinCreator extends Entity {
 
     private highlight = new Entity()
     private sparkle = new Entity()
-    
+
 
     constructor() {
         super()
@@ -26,20 +26,20 @@ export class coinCreator extends Entity {
         this.highlight.addComponent(new GLTFShape('models/game/GoldFish_Highlight.glb'))
         engine.addEntity(this.highlight)
         this.highlight.addComponentOrReplace(new Transform({
-            scale: new Vector3(0,0,0)
+            scale: new Vector3(0, 0, 0)
         }))
         this.highlight.setParent(this)
 
-        this.addComponent(new OnPointerHoverEnter(()=>{
+        this.addComponent(new OnPointerHoverEnter(() => {
             this.highlight.addComponentOrReplace(new Transform({
-                scale: new Vector3(1,1,1)
+                scale: new Vector3(1, 1, 1)
             }))
 
         }))
 
-        this.addComponent(new OnPointerHoverExit(()=>{
+        this.addComponent(new OnPointerHoverExit(() => {
             this.highlight.addComponentOrReplace(new Transform({
-                scale: new Vector3(0,0,0)
+                scale: new Vector3(0, 0, 0)
             }))
 
         }))
@@ -53,19 +53,18 @@ export class coinCreator extends Entity {
                 {
                     onCameraEnter: () => {
                         log('triggered!')
-                        engine.removeEntity(this)
                         addCoin(1)
-                        
+                        engine.removeEntity(this)
                     }
                 }
             )
         )
     }
-    public scalarTest(){
+    public scalarTest() {
 
         Dash_AnimationQueue.add({
             duration: 0.8,
-            data: { someval: 'foo'}, // optionally pass along some data that is accessible every frame
+            data: { someval: 'foo' }, // optionally pass along some data that is accessible every frame
             onFrame: (progress, data) => {
 
                 this.rotate.entity = this
@@ -79,7 +78,7 @@ export class coinCreator extends Entity {
             }
 
 
-})
+        })
 
     }
 

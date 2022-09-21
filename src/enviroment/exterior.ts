@@ -5,17 +5,23 @@ import { robotNPC } from "src/npc/npcCreator"
 import { movePlayerToVector3 } from "src/utils/movePlayerToVector3"
 import { Interior } from "./interior"
 
-//ad
+
 class ExteriorInstance extends Scene {
 
     private exteriorEntity = new Entity()
+    private trolley1 = new Entity()
+    private trolley2 = new Entity()
 
     constructor() {
         super(SceneLocations.Exterior)
         this.addComponent(new GLTFShape('models/enviroment/gf_ext_col_1.glb'))
-        this.exteriorEntity.addComponent(new GLTFShape('models/enviroment/gf_ext_1.glb'))
+        this.exteriorEntity.addComponent(new GLTFShape('models/enviroment/gf_ext_geo_1.glb'))
+        this.trolley1.addComponent(new GLTFShape('models/enviroment/gf_ext_trolley1_1.glb'))
+        this.trolley2.addComponent(new GLTFShape('models/enviroment/gf_ext_trolley2_1.glb'))
 
         this.exteriorEntity.setParent(this)
+        this.trolley1.setParent(this)
+        this.trolley2.setParent(this)
 
         this.createRobot()
     }

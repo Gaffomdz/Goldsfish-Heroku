@@ -1,5 +1,7 @@
 import {  UICounter } from "@dcl/ui-scene-utils";
-import {  createFinishPrompt, createFishPrompt1 } from "../prompts/prompts";
+import { fishPrompt1 } from "src/prompts/gamePrompt1";
+import { fishPrompt2 } from "src/prompts/gamePrompt2";
+import { finishPrompt } from "../prompts/gamePrompt3";
 
 let credits = 0
 export function addCoin(amount: number) {
@@ -9,12 +11,18 @@ export function addCoin(amount: number) {
   log("contador", credits, amount)
   if (credits == 22) { // set up credits in 22 when game is ready
     log('cartelito')
-    createFinishPrompt()
+    finishPrompt.show()
   }
   if (credits == 1) { 
     log('first fish prompt')
-    createFishPrompt1()
+    fishPrompt1.show()
   }
+  if (credits ==2){
+    fishPrompt2.show()
+  }
+}
+export function setCoin(amount: number){
+  coinCounter.set(amount)
 }
 
 const canvas = new UICanvas()
@@ -25,10 +33,10 @@ coinsCounter.height = "43px"
 coinsCounter.sourceWidth = 116
 coinsCounter.sourceHeight = 43
 coinsCounter.hAlign = 'right'
-coinsCounter.vAlign = 'bottom'
+coinsCounter.vAlign = 'top'
 coinsCounter.positionX = -15
 
-const coinCounter = new UICounter(credits, -10, -3, Color4.Black(), 22, true)
+const coinCounter = new UICounter(credits, -10, 565, Color4.Black(), 22, true)
 
 
 //Hide the FPS panel to see the coincounter

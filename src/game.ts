@@ -2,7 +2,7 @@ import { SceneController } from "./congif/core/sceneController"
 import { SceneLocations } from "./congif/enums"
 import { SceneEntities } from "./congif/scenes"
 import { Interior } from "./enviroment/interior"
-import { createWelcomePrompt } from "./prompts/prompts"
+import { welcomePrompt } from "./prompts/welcomePrompt"
 
 class GameController {
   private scenes = SceneEntities
@@ -13,7 +13,7 @@ class GameController {
   }
 
 }
-createWelcomePrompt()
+welcomePrompt.show()
 new GameController()
 
 

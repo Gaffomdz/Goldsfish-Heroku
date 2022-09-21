@@ -20,7 +20,7 @@ export class Rock extends Entity{
             scale: new Vector3(0,0,0)
         }))
 
-        this.addComponent(new GLTFShape('models/enviroment/gf_int_smallbolders1_1.glb'))
+        this.addComponent(new GLTFShape('models/enviroment/gf_int_smallbolders_1_new.glb'))
         this.addComponent(new Transform({
             position: position,
             scale: new Vector3(modifier, modifier, modifier)
@@ -140,6 +140,7 @@ export class Rock extends Entity{
 
         if(this.personalhealth == 3){
             this.addComponentOrReplace(whiteMaterial)
+            
 
         }
         if(this.personalhealth == 2){
