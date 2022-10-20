@@ -109,7 +109,7 @@ let button1 = keyPadPrompt.addButton(
                 new Vector3(15.86, 0.88, 31.58),
                 new Vector3(20.73, 0.98, 23.61)
             )
-            Employees.modify2()
+            
             employeeEnterZone.show()
 
         }
