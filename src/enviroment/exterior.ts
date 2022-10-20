@@ -8,7 +8,7 @@ import { TriggerBox } from "src/utils/triggerBox"
 import { TickerGraphic } from "../utils/tickerGraphic"
 import { keyPadPrompt, passwortd1Input, passwortd2Input, passwortd3Input } from "src/prompts/EmployeeZone/keyPadPrompt"
 import { GuestBook } from "src/utils/guestBook"
-import { correctCode, showKeyPadCinema } from "src/prompts/cinemaKeyPadPrompt"
+import { correctCode } from "src/prompts/cinemaKeyPadPrompt"
 import { sceneMessageBus } from "src/utils/messageBus"
 
 
@@ -101,17 +101,13 @@ class ExteriorInstance extends Scene {
             rotation: new Quaternion().setEuler(360.000, 360.000, 360.000),
         }))
         this.cine.addComponentOrReplace(new OnPointerDown(() => {
-            if (x == 0) {
-                x = x + 1
-                showKeyPadCinema()
-                return
-            }
-            if (correctCode == true) {
+           
+           
                 sceneMessageBus.emit('play', {})
                 sceneMessageBus.on('play', () => {
                     this.cine.myVideoTexture.play()
                 })
-            }
+            
 
 
         }, {

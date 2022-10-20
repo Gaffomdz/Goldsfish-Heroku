@@ -186,9 +186,9 @@ passwortd1Input.visible = false
 passwortd2Input.visible = false
 passwortd3Input.visible = false
 
-export function showKeyPadCinema() {
-    cinemaKeyPadPrompt.show()
-    passwortd1Input.visible = true
-    passwortd2Input.visible = true
-    passwortd3Input.visible = true
-}
+// export function showKeyPadCinema() {
+//     cinemaKeyPadPrompt.show()
+//     passwortd1Input.visible = true
+//     passwortd2Input.visible = true
+//     passwortd3Input.visible = true
+// }

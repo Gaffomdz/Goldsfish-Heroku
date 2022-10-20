@@ -77,9 +77,7 @@ class EmployeesInstance extends Scene {
         this.createTickerGraphic()
         this.createKeyPadTrigger()
     }
-    // modify2() {
-    //     this.zone1.enable()
-    // }
+    
     createKeyPadTrigger() {
         this.keyPadTrigger.setParent(this)
         this.keyPadTrigger.addComponent(Dash_Material.transparent())
@@ -308,24 +306,7 @@ class EmployeesInstance extends Scene {
         this.tickerGraphic2.myVideoTexture.loop = true
 
     }
-    // createEmployeesZone() {
-    //     this.modArea.addComponent(
-    //         new AvatarModifierArea({
-    //             area: { box: new Vector3(32, 4, 32) },
-    //             modifiers: [AvatarModifiers.HIDE_AVATARS],
-    //         })
-    //     )
-    //     this.modArea.addComponent(
-    //         new Transform({
-    //             position: new Vector3(16, 0, 16),
-    //             scale: new Vector3(16, 4, 16)
-    //         })
-    //     )
-    //     engine.addEntity(this.modArea)
-    //     this.modArea.setParent(this)
-
-    // }
-
+   
 }
 
 export const Employees = new EmployeesInstance()
