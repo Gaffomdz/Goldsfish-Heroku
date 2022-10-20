@@ -2,8 +2,7 @@ import { openUI } from "src/prompts/GuestBook/ui"
 
 
 // external servers being used by the project - Please change these to your own if working on something else!
-export const fireBaseServer =
-  'https://us-central1-trilligent-ec9df.cloudfunctions.net/app'
+export const fireBaseServer = 'https://us-central1-trilligent-ec9df.cloudfunctions.net/app'
 
 // get player data
 

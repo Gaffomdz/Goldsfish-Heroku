@@ -11,6 +11,7 @@ import { GuestBook } from "src/utils/guestBook"
 import { correctCode, showKeyPadCinema } from "src/prompts/cinemaKeyPadPrompt"
 import { sceneMessageBus } from "src/utils/messageBus"
 
+
 let x = 0
 class ExteriorInstance extends Scene {
     //geo
@@ -20,7 +21,7 @@ class ExteriorInstance extends Scene {
     private linkedin = new Entity()
     private tickerGraphic = new TickerGraphic()
     private tickerGraphic2 = new TickerGraphic()
-    // private keypad = new Entity()
+    private keypad = new Entity()
     private guestBook = new GuestBook({
         position: new Vector3(17.600, 0.000, 11.200),
         rotation: Quaternion.Euler(360.000, 135.000, 360.000)
@@ -34,7 +35,7 @@ class ExteriorInstance extends Scene {
     private s2current = 1
     private s3current = 1
     private s4current = 1
-    private cine = new Cinema()
+    public cine = new Cinema()
     //utils
     private tentCard1 = new ExitPlane()
     private tentCard2 = new ExitPlane()
@@ -43,8 +44,8 @@ class ExteriorInstance extends Scene {
     private triggerBoxScreen2 = new TriggerBox()
     private triggerBoxScreen3 = new TriggerBox()
     private triggerBoxScreen4 = new TriggerBox()
-    // private keyPadTrigger = new ExitPlane()
-    private messbus = new MessageBus()
+    private keyPadTrigger = new ExitPlane()
+
 
     constructor() {
         super(SceneLocations.Exterior)
@@ -53,36 +54,34 @@ class ExteriorInstance extends Scene {
         this.instagram.addComponent(new GLTFShape('models/trilligent_instagram_1.glb'))
         this.logo.addComponent(new GLTFShape('models/trilligent_Logo_1.glb'))
         this.linkedin.addComponent(new GLTFShape('models/trilligent_linkedin_1.glb'))
-        // this.keypad.addComponent(new GLTFShape('models/Trilligent_keypad.glb'))
+        this.keypad.addComponent(new GLTFShape('models/Trilligent_keypad.glb'))
 
         this.exteriorEntity.setParent(this)
         this.instagram.setParent(this)
         this.logo.setParent(this)
         this.linkedin.setParent(this)
-        // this.keypad.setParent(this)
+        this.keypad.setParent(this)
         this.guestBook.setParent(this)
-        this.messbus.on('play', () => {
-            Exterior.cine.myVideoTexture.play()
-          })
+
         this.createNPC()
         this.createTentCards()
         this.createTriggerBoxesForScreens()
         this.createTickerGraphic()
-        // this.createKeyPadTrigger()
+        this.createKeyPadTrigger()
         this.createCinema()
 
     }
-    // createKeyPadTrigger() {
-    //     this.keyPadTrigger.setParent(this)
-    //     this.keyPadTrigger.addComponent(Dash_Material.transparent())
-    //     this.keyPadTrigger.addComponentOrReplace(new Transform({
-    //         position: new Vector3(20.600, 0.800, 22.600),
-    //         scale: new Vector3(0.800, 1.500, 0.700),
-    //         rotation: new Quaternion().setEuler(0.000, 90.000, 0.000),
-    //     }))
-    //     this.keyPadTrigger.onClick = () => this.keyPadPrompt(
-    //     )
-    // }
+    createKeyPadTrigger() {
+        this.keyPadTrigger.setParent(this)
+        this.keyPadTrigger.addComponent(Dash_Material.transparent())
+        this.keyPadTrigger.addComponentOrReplace(new Transform({
+            position: new Vector3(20.600, 0.800, 22.600),
+            scale: new Vector3(0.800, 1.500, 0.700),
+            rotation: new Quaternion().setEuler(0.000, 90.000, 0.000),
+        }))
+        this.keyPadTrigger.onClick = () => this.keyPadPrompt(
+        )
+    }
     keyPadPrompt() {
         keyPadPrompt.show()
         passwortd1Input.visible = true
@@ -102,7 +101,18 @@ class ExteriorInstance extends Scene {
             rotation: new Quaternion().setEuler(360.000, 360.000, 360.000),
         }))
         this.cine.addComponentOrReplace(new OnPointerDown(() => {
-          this.messbus.emit('play',{})
+            if (x == 0) {
+                x = x + 1
+                showKeyPadCinema()
+                return
+            }
+            if (correctCode == true) {
+                sceneMessageBus.emit('play', {})
+                sceneMessageBus.on('play', () => {
+                    this.cine.myVideoTexture.play()
+                })
+            }
+
 
         }, {
             hoverText: 'PlayVideo'
@@ -400,5 +410,4 @@ class ExteriorInstance extends Scene {
     }
 
 }
-
 export const Exterior = new ExteriorInstance()

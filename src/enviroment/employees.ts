@@ -1,7 +1,7 @@
 import { Scene } from "src/congif/core/scene"
 import { SceneLocations } from "src/congif/enums"
-import { Screen1, Screen2, Screen3, Screen4, ScreenEmp } from "src/utils/videoScreen"
-import { Dash_Material, Dash_Tweaker, Dash_Wait, Dash_Zone } from "dcldash"
+import { ScreenEmp } from "src/utils/videoScreen"
+import { Dash_Material, Dash_Wait } from "dcldash"
 import { ExitPlane } from "src/utils/exitPlane"
 import { TriggerBox } from "src/utils/triggerBox"
 import { TickerGraphic } from "../utils/tickerGraphic"
@@ -77,9 +77,9 @@ class EmployeesInstance extends Scene {
         this.createTickerGraphic()
         this.createKeyPadTrigger()
     }
-    modify2() {
-        // this.zone1.enable()
-    }
+    // modify2() {
+    //     this.zone1.enable()
+    // }
     createKeyPadTrigger() {
         this.keyPadTrigger.setParent(this)
         this.keyPadTrigger.addComponent(Dash_Material.transparent())

@@ -15,6 +15,9 @@ class GameController {
   }
 
 }
+// sceneMessageBus.on('play', () => {
+//   Exterior.cine.myVideoTexture.play()
+// })
 
 new GameController()
 
