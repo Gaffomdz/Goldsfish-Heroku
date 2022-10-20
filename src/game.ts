@@ -1,26 +1,22 @@
 import { SceneController } from "./congif/core/sceneController"
 import { SceneLocations } from "./congif/enums"
 import { SceneEntities } from "./congif/scenes"
-import { Interior } from "./enviroment/interior"
-import { welcomePrompt } from "./prompts/welcomePrompt"
+import { Employees } from "./enviroment/employees"
+import { Exterior } from "./enviroment/exterior"
+import { sceneMessageBus } from "./utils/messageBus"
+
 
 class GameController {
   private scenes = SceneEntities
 
   constructor() {
     SceneController.loadScene(SceneLocations.Exterior)
-    Interior.preload()
+    Employees.preload()
   }
 
 }
-welcomePrompt.show()
+
 new GameController()
-
-
-
-
-
-
 
 
 

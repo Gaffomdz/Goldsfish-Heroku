@@ -1,4 +1,4 @@
 export enum SceneLocations {
     Exterior,
-    Interior,
+    Employees,
 }

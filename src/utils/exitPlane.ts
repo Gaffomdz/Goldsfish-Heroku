@@ -1,5 +1,5 @@
 export class ExitPlane extends Entity {
-    private shape: PlaneShape = new PlaneShape()
+    private shape: BoxShape = new BoxShape()
     public onClick: () => void = () => {}
     private distance: number = 5
     private message: string = "Interact"
